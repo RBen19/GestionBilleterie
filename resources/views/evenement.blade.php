@@ -1,7 +1,7 @@
 @extends('navabar')
 @section('content')
     <div class="container mt-5">
-        <button type="button" class="btn btn-success mb-4"> Ajouter </button>
+        <button type="button" class="btn btn-success mb-4"><a href="{{route('CreateEvenement')}}" class="text-decoration-none text-dark" >Ajouter</a></button>
         <br>
         <div class="card shadow-sm">
             <div class="card-header bg-primary text-white text-center fs-4">

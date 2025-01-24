@@ -21,7 +21,7 @@ class EvenementController extends Controller
      */
     public function create()
     {
-        //
+        return view('addEvenement');
     }
 
     /**
@@ -29,7 +29,25 @@ class EvenementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $evenement = new Evenement();
+        $validated = $request->validate([
+            "libelle"=>"required",
+            "description"=>"required",
+            "date"=>"required",
+            "lieu"=>"required",
+            "prix"=>"required",
+        ]);
+        $evenement->libelle = $request['libelle'];
+        $evenement->description = $request['description'];
+        $evenement->prix = $request['prix'];
+        $evenement->date = $request['date'];
+        $evenement->lieu = $request['lieu'];
+        try {
+            $evenement->save();
+        }catch (\Exception $e){
+            throw $e;
+        }
+        return redirect()->route('evenement.index');
     }
 
     /**
