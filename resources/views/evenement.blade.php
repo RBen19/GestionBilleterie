@@ -3,6 +3,18 @@
     <div class="container mt-5">
         <button type="button" class="btn btn-success mb-4"><a href="{{route('CreateEvenement')}}" class="text-decoration-none text-dark" >Ajouter</a></button>
         <br>
+        @if(session('success'))
+        <div class="alert alert-success">
+            {{session('success')}}
+        </div>
+        @endif
+
+        @if(session('deleteSuccessfuly'))
+            <div class="alert alert-success">
+                {{session('deleteSuccessfuly')}}
+            </div>
+        @endif
+
         <div class="card shadow-sm">
             <div class="card-header bg-primary text-white text-center fs-4">
                 Liste des évènements
@@ -27,7 +39,11 @@
                             <td>
                                 <div class="d-flex justify-content-evenly">
                                     <button type="button" class="btn btn-primary">Modifier</button>
-                                    <button type="button" class="btn btn-danger">Supprimer</button>
+                                    <form action="{{route('deleteEvenement',$e->id)}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button  class="btn btn-danger">Supprimer</button>
+                                    </form>
                                 </div>
 
                             </td>
@@ -38,4 +54,5 @@
             </div>
         </div>
     </div>
+    {{$evenements->links()}}
 @endsection

@@ -40,7 +40,7 @@
                     <label for="description" class="form-label">Description</label>
                     <textarea class="form-control" id="description" name="description" rows="4">{{old('description')}}</textarea>
                     @error('description')
-                    <div class="alert alert-danger mt-2">Le champ description est obligatoire</div>
+                    <div class="alert alert-danger mt-1">Le champ description est obligatoire</div>
                     @enderror
                 </div>
 

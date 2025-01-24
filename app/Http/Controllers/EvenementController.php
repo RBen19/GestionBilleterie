@@ -12,7 +12,7 @@ class EvenementController extends Controller
      */
     public function index()
     {
-        $evenements= Evenement::all();
+        $evenements= Evenement::paginate(2);
         return view('evenement',compact('evenements'));
     }
 
@@ -44,10 +44,10 @@ class EvenementController extends Controller
         $evenement->lieu = $request['lieu'];
         try {
             $evenement->save();
+            return redirect('evenement')->with("success","Evenement ajouter avec succes");
         }catch (\Exception $e){
             throw $e;
         }
-        return redirect()->route('evenement.index');
     }
 
     /**
@@ -79,6 +79,7 @@ class EvenementController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Evenement::destroy($id);
+        return redirect('evenement')->with("deleteSuccessfuly","Evenement supprimer avec succes");
     }
 }

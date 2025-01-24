@@ -9,3 +9,4 @@ Route::get('/', function () {
 Route::get("/evenement",[EvenementController::class,"index"])->name("evenement.index");
 Route::get("/CreateEvenement",[EvenementController::class,"create"])->name("CreateEvenement");
 Route::post("/storeEvenement",[EvenementController::class,"store"])->name("storeEvenement");
+Route::delete('/deleteEvenement/{id}',[EvenementController::class,"destroy"])->name("deleteEvenement");
