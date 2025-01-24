@@ -27,6 +27,7 @@
                         <th scope="col">Prix</th>
                         <th scope="col">Date</th>
                         <th scope="col">Lieu</th>
+                        <th>Description</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -36,9 +37,10 @@
                             <td>{{$e->prix}}</td>
                             <td>{{$e->date}}</td>
                             <td>{{$e->lieu}}</td>
+                            <td>{{$e->description}}</td>
                             <td>
                                 <div class="d-flex justify-content-evenly">
-                                    <button type="button" class="btn btn-primary">Modifier</button>
+                                    <button type="button" class="btn btn-primary"><a href="{{route('editEvenement',$e->id)}}" class="text-decoration-none text-white">Modifier</a></button>
                                     <form action="{{route('deleteEvenement',$e->id)}}" method="post">
                                         @csrf
                                         @method('delete')

@@ -21,7 +21,8 @@ class EvenementController extends Controller
      */
     public function create()
     {
-        return view('addEvenement');
+        $evenements = new Evenement();
+        return view('addEvenement',compact('evenements'));
     }
 
     /**
@@ -63,7 +64,9 @@ class EvenementController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $evenements = Evenement::find($id);
+        return view('addEvenement',compact('evenements'));
+
     }
 
     /**
@@ -71,7 +74,14 @@ class EvenementController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $evenements = Evenement::find($id);
+        $evenements->libelle = $request['libelle'];
+        $evenements->description = $request['description'];
+        $evenements->prix = $request['prix'];
+        $evenements->date = $request['date'];
+        $evenements->lieu = $request['lieu'];
+        $evenements->save();
+        return redirect('evenement')->with("success","Evenement modifier avec succes");
     }
 
     /**
