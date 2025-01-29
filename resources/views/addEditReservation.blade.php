@@ -16,6 +16,15 @@
                         <label for="name" class="form-label">name</label>
                         <input type="text" class="form-control" id="name" name="name" required value="{{ $reservation->id ? $reservation->name: old('name')}}">
                     </div>
+                    <label class="mt-2 mb-5">
+                        liste evenement
+                        <select name="evenement_id">
+                        @foreach($evenements as $e)
+                            <option value="{{$e->id}}">{{$e->libelle}}</option>
+                        @endforeach
+                        </select>
+                    </label>
+                    <br>
 
                     <button type="submit" class="btn btn-primary w-100">{{$reservation->exists ? "Modifier": "Ajouter"}}</button>
                 </form>

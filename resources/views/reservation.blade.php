@@ -24,12 +24,15 @@
                     <thead>
                     <tr>
                         <th scope="col">Libelle</th>
+                        <th scope="col">Evenement</th>
+
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($reservations as $r)
                         <tr>
                             <td>{{$r->name}}</td>
+                            <td>{{$r->evenement_id}}</td>
 
                             <td>
                                 <div class="d-flex justify-content-evenly">
@@ -49,4 +52,5 @@
             </div>
         </div>
     </div>
+    {{$reservations->links()}}
 @endsection

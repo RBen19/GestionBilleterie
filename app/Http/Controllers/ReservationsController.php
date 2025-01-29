@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evenement;
 use App\Models\Reservations;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,8 @@ class ReservationsController extends Controller
     public function create()
     {
         $reservation  = new Reservations();
-        return view('addEditReservation', compact('reservation'));
+        $evenements = Evenement::all();
+        return view('addEditReservation', compact('reservation','evenements'));
     }
 
     /**
@@ -34,11 +36,12 @@ class ReservationsController extends Controller
             'name' => 'required',
         ]);
         try {
-            Reservations::create($validated);
-            /*
-              $reservation  =  new Reservations();
-            $reservation->name = $request['name'];
-            $reservation->save();*/
+          //  Reservations::create($validated);
+
+             $reservation  =  new Reservations();
+             $reservation->name = $request['name'];
+             $reservation->evenement_id = $request['evenement_id'];
+             $reservation->save();
 
             return to_route('reservations.index')->with('success', 'Reservation created!');
         }catch (\Exception $exception){
