@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('reservations', function (Blueprint $table) {
-           $table->foreignIdFor(\App\Models\Evenement::class)->nullable()->constrained()->onDelete('restrict');
+           //$table->foreignIdFor(\App\Models\Evenement::class)->nullable()->constrained()->onDelete('restrict');
+            $table->foreignId('evenement_id')->nullable()->constrained('evenements')->cascadeOnDelete();
         });
     }
 

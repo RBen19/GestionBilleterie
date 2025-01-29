@@ -32,7 +32,7 @@
                     @foreach($reservations as $r)
                         <tr>
                             <td>{{$r->name}}</td>
-                            <td>{{$r->evenement_id}}</td>
+                            <td>{{$r->evenement->libelle}}</td>
 
                             <td>
                                 <div class="d-flex justify-content-evenly">

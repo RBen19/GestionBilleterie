@@ -12,7 +12,7 @@ class EvenementController extends Controller
      */
     public function index()
     {
-        $evenements= Evenement::paginate(4);
+        $evenements= Evenement::paginate(6);
         return view('evenement',compact('evenements'));
     }
 
