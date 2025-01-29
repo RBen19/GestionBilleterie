@@ -14,25 +14,25 @@
                 <!-- Libelle -->
                 <div class="mb-3">
                     <label for="libelle" class="form-label">Libelle</label>
-                    <input type="text" class="form-control" id="libelle" name="libelle" required value="{{$evenements->libelle}}">
+                    <input type="text" class="form-control" id="libelle" name="libelle" required value="{{ $evenements->id ? $evenements->libelle: old('libelle')}}">
                 </div>
 
                 <!-- Prix -->
                 <div class="mb-3">
                     <label for="prix" class="form-label">Prix</label>
-                    <input type="number" class="form-control" id="prix" name="prix" required value="{{$evenements->prix}}">
+                    <input type="number" class="form-control" id="prix" name="prix" required value="{{ $evenements->id ? $evenements->prix : old('prix')}}">
                 </div>
 
                 <!-- Date -->
                 <div class="mb-3">
                     <label for="date" class="form-label">Date</label>
-                    <input type="date" class="form-control" id="date" name="date" required value="{{$evenements->date}}">
+                    <input type="date" class="form-control" id="date" name="date" required value="{{$evenements->id ? $evenements->date : old('date')}}">
                 </div>
 
                 <!-- Lieu -->
                 <div class="mb-3">
                     <label for="lieu" class="form-label">Lieu</label>
-                    <input type="text" class="form-control" id="lieu" name="lieu" value="{{$evenements->exists() ? $evenements->lieu: old('lieu')}}" >
+                    <input type="text" class="form-control" id="lieu" name="lieu" value="{{$evenements->id ? $evenements->lieu: old('lieu')}}" >
                     @error('lieu')
                     <div class="alert alert-danger mt-2">Le champ lieu est obligatoire</div>
                     @enderror
@@ -42,7 +42,7 @@
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
                     <textarea class="form-control" id="description" name="description" rows="4">
-                        {{$evenements->exists() ? $evenements->description : old('description')}}
+                        {{$evenements->id ? $evenements->description : old('description')}}
                     </textarea>
                     @error('description')
                     <div class="alert alert-danger mt-1">Le champ description est obligatoire</div>

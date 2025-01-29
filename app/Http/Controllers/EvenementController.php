@@ -47,7 +47,7 @@ class EvenementController extends Controller
             $evenement->save();
             return redirect('evenement')->with("success","Evenement ajouter avec succes");
         }catch (\Exception $e){
-            throw $e;
+            \Illuminate\Log\log($e);
         }
     }
 
