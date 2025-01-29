@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Evenement;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ReservationSeeder extends Seeder
+class EvenementSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,5 +14,7 @@ class ReservationSeeder extends Seeder
     public function run(): void
     {
         //
+
+        Evenement::factory(50)->create();
     }
 }
