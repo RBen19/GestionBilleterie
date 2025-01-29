@@ -12,7 +12,8 @@ class ReservationsController extends Controller
      */
     public function index()
     {
-        //
+        $reservations= Reservations::paginate(2);
+        return view('reservation',compact('reservations'));
     }
 
     /**
@@ -20,7 +21,8 @@ class ReservationsController extends Controller
      */
     public function create()
     {
-        //
+        $reservation  = new Reservations();
+        return view('addEditReservation', compact('reservation'));
     }
 
     /**
@@ -28,7 +30,20 @@ class ReservationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+        ]);
+        try {
+            Reservations::create($validated);
+            /*
+              $reservation  =  new Reservations();
+            $reservation->name = $request['name'];
+            $reservation->save();*/
+
+            return to_route('reservations.index')->with('success', 'Reservation created!');
+        }catch (\Exception $exception){
+           \Illuminate\Log\log()->error($exception->getMessage());
+        }
     }
 
     /**

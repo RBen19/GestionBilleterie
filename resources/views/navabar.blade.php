@@ -19,7 +19,7 @@
                     <a class="nav-link active" aria-current="page" href="{{route('evenement.index')}}">Liste Evènement</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="{{route('reservations.index')}}">Liste Réservations</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>

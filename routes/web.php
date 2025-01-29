@@ -12,3 +12,5 @@ Route::post("/storeEvenement",[EvenementController::class,"store"])->name("store
 Route::delete('/deleteEvenement/{id}',[EvenementController::class,"destroy"])->name("deleteEvenement");
 Route::get("/editEvenement/{id}",[EvenementController::class,"edit"])->name("editEvenement");
 Route::put("updateEvenement{id}",[EvenementController::class,"update"])->name("updateEvenement");
+
+Route::resource('reservations', \App\Http\Controllers\ReservationsController::class);
